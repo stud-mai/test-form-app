@@ -15,7 +15,7 @@ class TestForm extends Component{
 
   submitForm(e){
     e.preventDefault();
-    this.props.formActions.submitData();
+    this.props.formActions.submitData(e.target);
   }
 
   render(){

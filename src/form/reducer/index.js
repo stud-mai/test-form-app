@@ -121,9 +121,10 @@ const formReducer = (state = initialState, action) => {
           json = {...json, [key]: state[key].value}
         })
         alert('Данные сохранены!\n' + JSON.stringify(json, null, 2));
-        return {...state, submitting: false};
+        setTimeout(() => action.payload.reset(), 0);
+        return initialState
       } else {
-        return state;
+        return state
       }
     default:
       return state

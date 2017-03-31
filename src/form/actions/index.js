@@ -27,12 +27,15 @@ export const changeValue = (id, value) => {
   }
 }
 
-export const submitData = () => {
+export const submitData = (form) => {
   return (dispatch) => {
     dispatch({type: 'VALIDATE_DATA'});
 
     setTimeout(() => {
-      dispatch({type: 'SUBMIT_DATA'})
+      dispatch({
+        type: 'SUBMIT_DATA',
+        payload: form
+      })
     }, 1500);
   }
 }

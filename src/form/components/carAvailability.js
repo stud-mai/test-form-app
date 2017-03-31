@@ -31,7 +31,10 @@ const CarAvailability = (props) => {
           </label>
           <label>
             Модель автомобиля:&nbsp;
-            <select onChange={(e) => changeValue('carModel', e.target.value)} value={carModel.value || 'default'}>
+            <select
+              disabled={!carBrand.value}
+              value={carModel.value || 'default'}
+              onChange={(e) => changeValue('carModel', e.target.value)}>
               <option disabled value='default'>Выберете модель автомобиля</option>
               {carBrand.value && carModels[carBrand.value].map((item, index) => {
                 return <option key={Date.now() + index} value={item}>{item}</option>
