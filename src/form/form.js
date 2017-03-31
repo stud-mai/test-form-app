@@ -19,7 +19,7 @@ class TestForm extends Component{
   }
 
   render(){
-    const { lastName, firstName, middleName, gender, birthday, pass, email } = this.props.form;
+    const { lastName, firstName, middleName, gender, birthday, pass, email, submitting } = this.props.form;
     return (
       <form onSubmit={this.submitForm.bind(this)}>
         <NameField id='lastName' name='Фамилия' required={true} actions={this.props.formActions} stateToProps={lastName}/>
@@ -31,7 +31,7 @@ class TestForm extends Component{
         <EmailField id='email' name='Email' required={true} actions={this.props.formActions} stateToProps={email}/>
         <CarAvailability id='carAvailability' actions={this.props.formActions} stateToProps={this.props.form}/>
 
-        <button type='submit'>Отправить</button>
+        <button type='submit' disabled={submitting} className={submitting? 'disabled': ''}>Отправить</button>
       </form>
     )
   }

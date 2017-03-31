@@ -101,25 +101,28 @@ const formReducer = (state = initialState, action) => {
         default:
           return state
       }
-    case 'SUBMIT_DATA':
+    case 'VALIDATE_DATA':
       const errorFields = Object.keys(state).filter(key => (!state[key].value && state[key].required) || state[key].error);
       if (errorFields.length){
-        console.log('err')
         for (let index in errorFields){
           let field = errorFields[index];
           if (!state[field].error){
             newState[field] = {...newState[field], error: 'Поле обязательно к заполнению!'};
           }
         }
-        return newState
+        return {...newState, submitting: false}
       } else {
+        return {...state, submitting: true}
+      }
+    case 'SUBMIT_DATA':
+      if (state.submitting){
         let json = {};
         Object.keys(state).forEach(key => {
           json = {...json, [key]: state[key].value}
         })
-        setTimeout(() => {
-          alert('Данные сохранены!\n' + JSON.stringify(json, null, 2));
-        }, 2000)
+        alert('Данные сохранены!\n' + JSON.stringify(json, null, 2));
+        return {...state, submitting: false};
+      } else {
         return state;
       }
     default:

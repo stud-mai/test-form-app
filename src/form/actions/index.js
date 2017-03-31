@@ -28,7 +28,11 @@ export const changeValue = (id, value) => {
 }
 
 export const submitData = () => {
-  return {
-    type: 'SUBMIT_DATA'
+  return (dispatch) => {
+    dispatch({type: 'VALIDATE_DATA'});
+
+    setTimeout(() => {
+      dispatch({type: 'SUBMIT_DATA'})
+    }, 1500);
   }
 }

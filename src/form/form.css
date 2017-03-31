@@ -38,3 +38,7 @@ button{
   font-style: italic;
   margin-left: 15px;
 }
+
+.disabled{
+  opacity: .5;
+}
