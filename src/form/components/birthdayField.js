@@ -15,7 +15,7 @@ const BirthdayField = (props) => {
           id={id}
           className={error? 'error' : ''}
           required={required}
-          mask='9999 999999'
+          mask='99.99.9999'
           onBlur={(e) => focusUnset(id, e.target.value)}/>
       :
         <InputElement
@@ -24,7 +24,7 @@ const BirthdayField = (props) => {
           required={required}
           mask='99.99.9999'
           placeholder='дд.мм.гггг'
-          pattern='[0-9]{4}\.[0-9]{6}\.[0-9]{4}'
+          pattern='[0-9]{2}\.[0-9]{2}\.[0-9]{4}'
           onBlur={(e) => focusUnset(id, e.target.value)}/>
         }
       {error? <span className='error-msg'>&nbsp;{error}</span> : ''}

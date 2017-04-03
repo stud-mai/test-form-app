@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
 
-const initialState = {
+export const initialState = {
   'lastName': {value:'', required: true},
   'firstName': {value:'', required: true},
   'middleName': {value:''},
